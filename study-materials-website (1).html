@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كارفين مذاكرة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8e44ad; /* لون بنفسجي غامق */
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #7d3c98; /* لون بنفسجي أغمق للعنوان الفرعي */
+            margin-bottom: 15px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #333;
+            color: #8e44ad;
+        }
+        
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #8e44ad;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #8e44ad;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #7d3c98;
+            transform: translateY(-3px);
+        }
+        
+        .admin-btn {
+            display: inline-block;
+            background-color: #222;
+            color: #8e44ad;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #8e44ad;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .admin-btn:hover {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+        
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .section-card {
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .section-content {
+            padding: 20px;
+        }
+        
+        .section-content h3 {
+            color: #8e44ad;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .section-content p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .upload-section {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+        
+        .upload-section h2 {
+            color: #8e44ad;
+            margin-bottom: 20px;
+        }
+        
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-group label {
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #fff;
+        }
+        
+        .upload-btn {
+            cursor: pointer;
+            background-color: #8e44ad;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-btn:hover {
+            background-color: #7d3c98;
+        }
+        
+        .share-section {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .share-section h2 {
+            color: #8e44ad;
+            margin-bottom: 20px;
+        }
+        
+        .share-link {
+            padding: 15px;
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #fff;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .admin-section {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #333;
+        }
+        
+        .admin-section h3 {
+            color: #8e44ad;
+            margin-bottom: 15px;
+        }
+        
+        .admin-link {
+            display: block;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            margin-bottom: 15px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        footer {
+            border-top: 1px solid #333;
+            padding: 20px 0;
+            text-align: center;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">كارفين مذاكرة</div>
+            <div class="subtitle">تحت إدارة كارف</div>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">الملخصات</a></li>
+                    <li><a href="#">الملفات</a></li>
+                    <li><a href="#">الصور</a></li>
+                    <li><a href="#">الفيديوهات</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <a href="#admin" class="admin-btn">لوحة التحكم</a>
+        </header>
+        
+        <section class="hero">
+            <h1>منصة كارفين للمذاكرة</h1>
+            <p>قم برفع وتنظيم ملخصاتك الدراسية، ملفاتك، صورك وفيديوهاتك التعليمية في مكان واحد</p>
+            <a href="#upload" class="btn">رفع المواد الآن</a>
+        </section>
+        
+        <section class="sections">
+            <div class="section-card">
+                <img src="/api/placeholder/400/320" alt="ملخصات دراسية">
+                <div class="section-content">
+                    <h3>ملخصات دراسية</h3>
+                    <p>اجمع أهم الملخصات الدراسية لكل المواد في مكان واحد للرجوع إليها في أي وقت</p>
+                    <a href="#" class="btn">استعراض الملخصات</a>
+                </div>
+            </div>
+            
+            <div class="section-card">
+                <img src="/api/placeholder/400/320" alt="ملفات">
+                <div class="section-content">
+                    <h3>ملفات</h3>
+                    <p>احفظ ملفاتك الهامة مثل العروض التقديمية والوثائق وملفات PDF</p>
+                    <a href="#" class="btn">استعراض الملفات</a>
+                </div>
+            </div>
+            
+            <div class="section-card">
+                <img src="/api/placeholder/400/320" alt="صور">
+                <div class="section-content">
+                    <h3>صور</h3>
+                    <p>احفظ صور المخططات والرسومات والمعادلات بشكل منظم</p>
+                    <a href="#" class="btn">استعراض الصور</a>
+                </div>
+            </div>
+            
+            <div class="section-card">
+                <img src="/api/placeholder/400/320" alt="فيديوهات">
+                <div class="section-content">
+                    <h3>فيديوهات</h3>
+                    <p>ارفع الفيديوهات التعليمية وشروحات المواد لتكون متاحة لك في أي وقت</p>
+                    <a href="#" class="btn">استعراض الفيديوهات</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="share-section">
+            <h2>مشاركة الموقع</h2>
+            <p>شارك هذا الرابط مع زملائك للوصول إلى المحتوى التعليمي</p>
+            <div class="share-link">https://karven-study.edu/public/access?ref=shared</div>
+            <button class="btn" onclick="alert('تم نسخ الرابط')">نسخ الرابط</button>
+        </section>
+        
+        <section id="upload" class="upload-section">
+            <h2>رفع مواد جديدة</h2>
+            <div class="upload-form">
+                <div class="form-group">
+                    <label for="title">العنوان</label>
+                    <input type="text" id="title" placeholder="أدخل عنوان المادة">
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">التصنيف</label>
+                    <select id="category">
+                        <option value="summary">ملخص دراسي</option>
+                        <option value="file">ملف</option>
+                        <option value="image">صورة</option>
+                        <option value="video">فيديو</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">المادة الدراسية</label>
+                    <input type="text" id="subject" placeholder="أدخل اسم المادة الدراسية">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">الوصف</label>
+                    <textarea id="description" rows="4" placeholder="اكتب وصفًا مختصرًا للمادة"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">الملف</label>
+                    <input type="file" id="file">
+                </div>
+                
+                <button type="submit" class="upload-btn">رفع المادة</button>
+            </div>
+        </section>
+        
+        <section id="admin" class="admin-section">
+            <h3>لوحة التحكم (للمسؤول فقط)</h3>
+            <p>روابط خاصة لإدارة الموقع متاحة فقط للمسؤول</p>
+            
+            <div class="form-group" style="margin: 20px 0;">
+                <label for="admin-password">كلمة المرور</label>
+                <input type="password" id="admin-password" placeholder="أدخل كلمة مرور المسؤول">
+                <button class="admin-btn" style="margin-top: 10px;">تسجيل الدخول</button>
+            </div>
+            
+            <div class="admin-links" style="display: none;">
+                <h4 style="color: #8e44ad; margin-bottom: 10px;">روابط إدارة الموقع</h4>
+                <div class="admin-link">https://karven-study.edu/admin/dashboard</div>
+                <div class="admin-link">https://karven-study.edu/admin/content-manager</div>
+                <div class="admin-link">https://karven-study.edu/admin/user-manager</div>
+                <div class="admin-link">https://karven-study.edu/admin/statistics</div>
+                
+                <h4 style="color: #8e44ad; margin: 20px 0 10px;">رابط التعديل الخاص</h4>
+                <div class="admin-link">https://karven-study.edu/admin/edit-mode?token=karv-special-access</div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; كارفين مذاكرة 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        // كود بسيط للتوضيح فقط (سيحتاج للتطوير في الإصدار النهائي)
+        document.querySelector('.admin-btn').addEventListener('click', function() {
+            const password = document.getElementById('admin-password').value;
+            if (password === "admin123") { // هذا للتوضيح فقط، يجب استخدام طرق أمان أفضل
+                document.querySelector('.admin-links').style.display = 'block';
+                alert('تم تسجيل الدخول بنجاح');
+            } else if(password) {
+                alert('كلمة المرور غير صحيحة');
+            }
+        });
+    </script>
+</body>
+</html>
